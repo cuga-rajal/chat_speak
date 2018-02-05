@@ -2,7 +2,7 @@
 Chatter v1.0 Notes
 Cuga Rajal, February 4, 2018
 
-This is a shell script that can be used to speak local chat in Firestorm,
+"chatter.php" is a shell script that can be used to speak local chat of Firestorm,
 using the built-in text-to-speech feature of macOS.
 
 Get the latest version of the script from: https://github.com/cuga-rajal
@@ -35,7 +35,10 @@ for example, if you place the script on your desktop, you could use:
 
 You should now hear the computer speak each line of local chat from other avatars. 
 
-The script does filter out some system messages.
+The file "Chatter.app.zip" is an app wrapper for the program. It can be double-clicked to run.
+It was created using Platypus, https://www.sveinbjorn.org/platypus
+
+The script filters out some system messages. It only supports English at this time.
 
 This is a work in progress. Please notify me of bugs or feature requests.
 
