@@ -40,7 +40,7 @@ To run the script in a terminal window:
 
 Open a window for the Terminal program and type
 
-    php [full path to chatter.php]
+	php [full path to chatter.php]
 
 for example, if you place the script on your desktop, you could use:
 
@@ -48,10 +48,12 @@ for example, if you place the script on your desktop, you could use:
 
 You should begin to hear the computer speak each line of local chat from other avatars. 
 
-The file "Chatter.app.zip" is an app wrapper for the program. It can be double-clicked to run.
+The file "Chatter.app.zip" in the repository is a ZIP archive of an app wrapper for the program.
+Just unzip and double-click to start.
+
 It was created using Platypus, https://www.sveinbjorn.org/platypus
 
-The script filters out some system messages. It only supports English at this time.
+The script filters out some system messages that appear in local chat. It only supports English at this time.
 
 This is a work in progress. Please notify me of bugs or feature requests.
 
