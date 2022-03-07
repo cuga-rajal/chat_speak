@@ -11,7 +11,7 @@ How to set up:
 
 1) In macOS 12 or later, go to System Preferences -> Accessibility -> Spoken Content
 
-(In In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
+(In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
     
 Click the System Voice drop-down menu and select Customize at the bottom of the
 list. In the window that appears, select (if not already selected) all voices
