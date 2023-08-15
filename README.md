@@ -1,9 +1,11 @@
 # chat_speak
-Chatter v1.1 Notes
-Cuga Rajal, March 7, 2022
+Chatter v1.2 Notes
+Cuga Rajal, August 15, 2023
 
 "chatter.php" is a shell script that can be used to speak local chat of Firestorm,
-using the built-in text-to-speech feature of macOS.
+using the built-in text-to-speech feature of macOS. 
+
+Version 1.2 is an update compatible with macOS Ventira (macOS 13).
 
 Get the latest version of the script from: https://github.com/cuga-rajal
 
@@ -14,10 +16,8 @@ How to set up:
 (In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
     
 Click the System Voice drop-down menu and select Customize at the bottom of the
-list. In the window that appears, select (if not already selected) all voices
-for English (United States) including Siri voices. Also select the non-Siri
-voices for all other English language variants. (Skip English - Novelty). Click
-the "OK" button and wait for all voice downloads to complete.
+list. In the window that appears, select the voices you with to use.
+On macOS Ventura (macOS 13) the Siri voices cannot be used.
 
 Check the list of $voices in the chatter.php script and adjust as needed to match 
 the enabled voices on your system.
