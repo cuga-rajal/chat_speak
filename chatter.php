@@ -1,6 +1,6 @@
 <?php
 
-// Chatter v.1.2 - March 7, 2022
+// Chatter v.1.3 - Aug 29, 2023
 // by Cuga Rajal
 //
 // Run this script at the shell to speak the local chat, using built-in text-to-speech in macOS.
@@ -9,9 +9,8 @@
 //
 // Different macOS versions contain different voice names. Please check the list of voices
 // below and update that list if necessary to match your system. 
-// The list below is from a Ventora system (macOS 13).
-//
-// August 8, 2023 - updated voice names for Ventura
+// The list below is from a Ventura system (macOS 13).
+
 
 $voices = array(
 'Alex',
@@ -62,7 +61,7 @@ while(1) {
    $phrase = preg_replace('/^(\s+)?\/me/',str_replace('_',' ',$user),$phrase);
    $phrase = preg_replace('/[\r\n]+/','',$phrase);   
    $phrase = preg_replace('/http(s)?\:\/\/[^\s]/', '',$line); // Don't speak URLs
-   $phrase = preg_replace('/[^a-z0-9\ \-\:\<\&\;()\❤]+/','',$phrase); // ??
+   $phrase = preg_replace('/[^a-zA-Z0-9\ \-\:\<\&\;()\❤]+/','',$phrase); // ??
    $phrase = str_replace(';',',',$phrase);
    $phrase = str_replace('&',' and ',$phrase);
    $phrase = str_replace('°͜°',' happy face ',$phrase);

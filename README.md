@@ -1,11 +1,12 @@
 # chat_speak
-Chatter v1.2 Notes
-Cuga Rajal, August 15, 2023
+Chatter v1.3 Notes
+Cuga Rajal, August 29, 2023
 
-"chatter.php" is a shell script that can be used to speak local chat of Firestorm,
-using the built-in text-to-speech feature of macOS. 
+"chatter.php" is a shell script that can be used to speak local chat of Firestorm
+on macOS systems, using the built-in text-to-speech feature of macOS. It should
+work on macOS versions 10.15 and later.
 
-Version 1.2 is an update compatible with macOS Ventira (macOS 13).
+Version 1.3 is an update compatible with macOS Ventura (macOS 13) and adds bug fixes.
 
 Get the latest version of the script from: https://github.com/cuga-rajal
 
