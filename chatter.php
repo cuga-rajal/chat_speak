@@ -1,15 +1,15 @@
 <?php
 
-// Chatter v.1.3 - Aug 29, 2023
+// Chatter v.1.5 - Oct 3, 2023
 // by Cuga Rajal
 //
-// Run this script at the shell to speak the local chat, using built-in text-to-speech in macOS.
+// Run this script to speak the local chat, using built-in text-to-speech in macOS.
 // More information at https://github.com/cuga-rajal/chat_speak
 // Before using please check system requirements at https://github.com/cuga-rajal/chat_speak
 //
 // Different macOS versions contain different voice names. Please check the list of voices
 // below and update that list if necessary to match your system. 
-// The list below is from a Ventura system (macOS 13).
+// The list below is from a US-English Ventura system (macOS 13).
 
 
 $voices = array(
@@ -60,7 +60,7 @@ while(1) {
    $phrase = preg_replace('/^[^\:]+\:[^\:]+\:[^\:]+\:(.*)$/',"$1",strtolower($line));
    $phrase = preg_replace('/^(\s+)?\/me/',str_replace('_',' ',$user),$phrase);
    $phrase = preg_replace('/[\r\n]+/','',$phrase);   
-   $phrase = preg_replace('/http(s)?\:\/\/[^\s]/', '',$line); // Don't speak URLs
+   $phrase = preg_replace('/http(s)?\:\/\/[^\s]+/', '',$line); // Don't speak URLs
    $phrase = preg_replace('/[^a-zA-Z0-9\ \-\:\<\&\;()\❤]+/','',$phrase); // ??
    $phrase = str_replace(';',',',$phrase);
    $phrase = str_replace('&',' and ',$phrase);
@@ -69,16 +69,17 @@ while(1) {
    $phrase = str_replace('❤',' love ',$phrase);
    $phrase = preg_replace('/^\:\)/',' smiley face ',$phrase);
    $phrase = preg_replace('/ \:\)/',' smiley face ',$phrase);
-   $phrase = preg_replace('/ ty/',' thank you',$phrase);
-   $phrase = preg_replace('/^ty/',' thank you',$phrase);
-   $phrase = preg_replace('/ lol([^\w]?)/'," laugh out loud $2",$phrase);
-   $phrase = preg_replace('/^lol([^\w]?)/'," laugh out loud $2",$phrase);
-   $phrase = str_replace('brb',' be right back ',$phrase);
-   $phrase = str_replace('rofl',' rolling on the floor laughing ',$phrase);
-   $phrase = str_replace('lmao',' laughing my ass off ',$phrase);
-   $phrase = str_replace('gtsy',' good to see you ',$phrase);
-   $phrase = preg_replace('/ wb/', ' welcome back/',$phrase);
-   $phrase = preg_replace('/^wb/', ' welcome back/',$phrase);
+   $phrase = preg_replace('/ ty$/u',' thank you',$phrase);
+   $phrase = preg_replace('/^ty/u',' thank you',$phrase);
+   $phrase = preg_replace('/ ty[\s\,\.\!]+/u',' thank you',$phrase);
+   $phrase = preg_replace('/ lol([^\w]?)/u'," laugh out loud $2",$phrase);
+   $phrase = preg_replace('/^lol([^\w]?)/u'," laugh out loud $2",$phrase);
+   $phrase = preg_replace('/brb/u',' be right back ',$phrase);
+   $phrase = preg_replace('/rofl/u',' rolling on the floor laughing ',$phrase);
+   $phrase = preg_replace('/lmao/u',' laughing my ass off ',$phrase);
+   $phrase = preg_replace('/gtsy/u',' good to see you ',$phrase);
+   $phrase = preg_replace('/ wb/u', ' welcome back/',$phrase);
+   $phrase = preg_replace('/^wb/u', ' welcome back/',$phrase);
    
    $phrase = str_replace('is online',"$user is online",$phrase);
    $phrase = str_replace('is offline',"$user is offline",$phrase);
