@@ -20,7 +20,7 @@ Click the System Voice drop-down menu and select Manage Voices at the bottom of 
 list. Select the voices you wish to use and download them if necessary.
 On macOS Ventura (macOS 13) and later the Siri voices cannot be used.
 
-Open the chatter.php script and edit the $voices and edit the list of voices to match 
+Open the chatter.php script and edit the $voices configuration section to match 
 the voices on your system you want to use.
 
 2) The program requires PHP. On macOS 12 or later this must be installed with Homebrew.
