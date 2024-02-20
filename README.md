@@ -17,7 +17,7 @@ How to set up:
 (In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
     
 Click the System Voice drop-down menu and select Manage Voices at the bottom of the
-list. In the window that appears, select the voices you with to use.
+list. Select the voices you wish to use and download them if necessary.
 On macOS Ventura (macOS 13) and later the Siri voices cannot be used.
 
 Open the chatter.php script and edit the $voices and edit the list of voices to match 
