@@ -1,15 +1,19 @@
 <?php
 
-// Chatter v.1.5 - Oct 3, 2023
+// Chatter v.1.6 - Feb 20, 2024
 // by Cuga Rajal
 //
-// Run this script to speak the local chat, using built-in text-to-speech in macOS.
+// Use this script to speak the local chat in Firestorm, using built-in text-to-speech in macOS.
 // More information at https://github.com/cuga-rajal/chat_speak
 // Before using please check system requirements at https://github.com/cuga-rajal/chat_speak
 //
-// Different macOS versions contain different voice names. Please check the list of voices
-// below and update that list if necessary to match your system. 
-// The list below is from a US-English Ventura system (macOS 13).
+// Before you run the script you will need to edit the following section to include a list of
+// voice names installed on your system. Manage and install system voices from:
+//    System Settings -> Accessibility -> Spoken Content -> System Voice -> Manage Voices
+//
+// Voices in the list below should be installed on your system and the ones you want to use.
+// You can edit this list to be whichever voices you want from those available.
+// The list below is from a US-English Sonoma system (macOS 14).
 
 
 $voices = array(
@@ -18,6 +22,7 @@ $voices = array(
 'Ava (Enhanced)',
 'Evan (Enhanced)',
 'Joelle (Enhanced)',
+'Nathan (Enhanced)',
 'Noelle (Enhanced)',
 "Samantha (Enhanced)",
 "Susan (Enhanced)",
@@ -45,17 +50,26 @@ if(count($avis)==0) { echo "Cannot determine avatar name, exiting."; exit(0); }
 arsort($avis);
 $avi = array_keys($avis)[0];
 
-$handle = popen("/usr/bin/tail -2f '/Users/$me/Library/Application Support/Firestorm/$avi/chat.txt' 2>&1", 'r');
+$handle = popen("/usr/bin/tail -4f '/Users/$me/Library/Application Support/Firestorm/$avi/chat.txt' 2>&1", 'r');
 $users = array();
 $n=0;
 echo "Chatter script running, click the Cancel button to exit\n";
 while(1) {
    $line = fgets($handle);
-   //if(! preg_match('/\[\d+\//',$line)) { continue; } // Don't speak URLs
    if(preg_match('/(Now playing|is offline|is online|AntiSpam\: Blocked)/',$line)) { continue; }  // Don't speak song announcements
    if(preg_match('/(s offline.)/',$line)) { continue; }
-   $user = trim(preg_replace('/^.*\]\s+([^\:]+)\:.*$/',"$1",$line));
-   $line = trim(preg_replace('/^.*\]\s+[^\:]+\:(.*)$/',"$1",$line));
+   if(preg_match('/^.*\]\s+[^\:]+\:.*$/',$line)) {
+      $user = urldecode(str_replace(' ','',preg_replace('/^.*\]\s+([^\:]+)\:.*$/',"$1",$line)));
+      $line = trim(preg_replace('/^\[.*\]\s+(.*)$/',"$1",$line));
+      $line = trim(preg_replace('/^.*\:\s+(.*)$/',"$1",$line));
+   } else {
+      $user = "unknown";
+      $line = trim(preg_replace('/^\[.*\]\s+(.*)$/',"$1",$line));
+   }
+   echo "user $user\n";
+   $line = trim(preg_replace('/^\[.*\]\s+(.*)$/',"$1",$line));
+   $line = trim(preg_replace('/^.*\:\s+\:(.*)$/',"$1",$line));
+   
    $line = preg_replace('/[\'\"\`\|\[\]]/','',$line);     // Filter characters not supported by 'say' or would escape to shell
    $phrase = preg_replace('/^[^\:]+\:[^\:]+\:[^\:]+\:(.*)$/',"$1",strtolower($line));
    $phrase = preg_replace('/^(\s+)?\/me/',str_replace('_',' ',$user),$phrase);
@@ -80,9 +94,10 @@ while(1) {
    $phrase = preg_replace('/gtsy/u',' good to see you ',$phrase);
    $phrase = preg_replace('/ wb/u', ' welcome back/',$phrase);
    $phrase = preg_replace('/^wb/u', ' welcome back/',$phrase);
+   $phrase = trim($phrase);
+   //if($phrase=="is online.") { $name = trim(str_replace('.','',split('@',$user)[0])); $phrase = "$name is online"; }
+   //if($phrase=="is offline.") { $name = trim(str_replace('.','',split('@',$user)[0])); $phrase = "$name is offline"; }
    
-   $phrase = str_replace('is online',"$user is online",$phrase);
-   $phrase = str_replace('is offline',"$user is offline",$phrase);
    if(! isset($users[$user])) { $users[$user] = $n; $n++; if($n==count($voices)) { $n=0; } } // If it's a new user, assign them a new voice
    $voice = $voices[$users[$user]];
    $cmd = "say -v '$voice' '$phrase'";

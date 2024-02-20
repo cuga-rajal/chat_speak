@@ -1,12 +1,12 @@
 # chat_speak
-Chatter v1.3 Notes
-Cuga Rajal, August 29, 2023
+Chatter v1.6 Notes
+Cuga Rajal, February 20, 2024
 
 "chatter.php" is a shell script that can be used to speak local chat of Firestorm
 on macOS systems, using the built-in text-to-speech feature of macOS. It should
 work on macOS versions 10.15 and later.
 
-Version 1.3 is an update compatible with macOS Ventura (macOS 13) and adds bug fixes.
+Version 1.6 is an update compatible with macOS Sonoma (macOS 14) and adds bug fixes.
 
 Get the latest version of the script from: https://github.com/cuga-rajal
 
@@ -16,12 +16,12 @@ How to set up:
 
 (In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
     
-Click the System Voice drop-down menu and select Customize at the bottom of the
+Click the System Voice drop-down menu and select Manage Voices at the bottom of the
 list. In the window that appears, select the voices you with to use.
-On macOS Ventura (macOS 13) the Siri voices cannot be used.
+On macOS Ventura (macOS 13) and later the Siri voices cannot be used.
 
-Check the list of $voices in the chatter.php script and adjust as needed to match 
-the enabled voices on your system.
+Open the chatter.php script and edit the $voices and edit the list of voices to match 
+the voices on your system you want to use.
 
 2) The program requires PHP. On macOS 12 or later this must be installed with Homebrew.
 
@@ -35,7 +35,8 @@ Check the checkbox "Save nearby chat transcript"
 
 4) Log in to Second Life or Opensim if you aren't already
 
-5) Run the pre-compiled application provided or run the script in a terminal window.
+5) Once you are logged in you can run the script, either from a terminal or by opening the
+wrapper application provided with the package.
 
 To run the script in a terminal window:
 
@@ -61,4 +62,5 @@ This is a work in progress. Please notify me of bugs or feature requests.
 Thanks,
 
 Cuga Rajal (Second Life and OSGrid)
-cugarajal@gmail.com
+cuga@rajal.org
+
