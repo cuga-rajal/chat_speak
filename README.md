@@ -4,7 +4,7 @@ by Cuga Rajal
 
 This script will speak the local chat in macOS Firestorm, using macOS built-in text-to-speech.
 
-More information at https:github.com/cuga-rajal/chat_speak
+More information at https://github.com/cuga-rajal/chat_speak
 
 *General requirements*
 
