@@ -1,42 +1,35 @@
 # chat_speak
-Chatter v1.6 Notes
-Cuga Rajal, February 20, 2024
+Chatter v.1.7 - Dec 17, 2024
+by Cuga Rajal
 
-"chatter.php" is a shell script that can be used to speak local chat of Firestorm
-on macOS systems, using the built-in text-to-speech feature of macOS. It should
-work on macOS versions 10.15 and later.
+This script will speak the local chat in macOS Firestorm, using macOS built-in text-to-speech.
 
-Version 1.6 is an update compatible with macOS Sonoma (macOS 14) and adds bug fixes.
+More information at https:github.com/cuga-rajal/chat_speak
 
-Get the latest version of the script from: https://github.com/cuga-rajal
+*General requirements*
 
-How to set up:
+Before you run the script you will need to check your system for installed voices and install
+additional ones if necessary. 
 
-1) In macOS 12 or later, go to System Preferences -> Accessibility -> Spoken Content
+	System Settings -> Accessibility -> Spoken Content -> System Voice -> Manage Voices (or "?" circle)
 
-(In macOS 10.12 to 10.15, go to System Preferences -> Accessibility -> Speech)
-    
-Click the System Voice drop-down menu and select Manage Voices at the bottom of the
-list. Select the voices you wish to use and download them if necessary.
-On macOS Ventura (macOS 13) and later the Siri voices cannot be used.
+If necessary, edit the $voices section in the script to match the list of voices installed on your system.
+The $voices list is a mix of English-speaking voices available on Monterey (13.x) and later systems.
 
-Open the chatter.php script and edit the $voices configuration section to match 
-the voices on your system you want to use.
+You will also need to configure your macOS Firestorm viewer to "Save nearby chat transcript" in:
 
-2) The program requires PHP. On macOS 12 or later this must be installed with Homebrew.
+	Preferences -> Privacy -> Log & Transcripts
+
+Lastly, your system must have PHP installed. On macOS 12 or later this can be installed with Homebrew.
 
 	brew install php
-	
-Check that php is installed at /opt/homebrew/bin/php
 
-3) In Firestorm, go to the Preferences window and select Privacy -> Logs & Transcripts
+*How to start*
 
-Check the checkbox "Save nearby chat transcript" 
+Once configured, you will need to log into a virtual world before running the script.
 
-4) Log in to Second Life or Opensim if you aren't already
-
-5) Once you are logged in you can run the script, either from a terminal or by opening the
-wrapper application provided with the package.
+You can run the script either from a terminal or by opening the wrapper application provided
+in this repository.
 
 To run the script in a terminal window:
 
@@ -51,11 +44,18 @@ for example, if you place the script on your desktop, you could use:
 You should begin to hear the computer speak each line of local chat from other avatars. 
 
 The file "Chatter.app.zip" in the repository is a ZIP archive of an app wrapper for the program.
-Just unzip and double-click to start.
+Just unzip it and double-click to start. 
 
 It was created using Platypus, https://www.sveinbjorn.org/platypus
 
-The script filters out some system messages that appear in local chat. It only supports English at this time.
+The app expects php to be located in
+/opt/homebrew/bin/php which is standard for Apple Silicon systems. For Intel macOS systems
+you may need to rebuild this app with Platypus using a modified path for php, typically
+/usr/local/bin/php.
+
+Version 1.7 includes some code cleanup and better filtering of long technical phrases such as URLs and
+vectors.
+
 
 This is a work in progress. Please notify me of bugs or feature requests.
 
