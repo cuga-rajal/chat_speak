@@ -1,5 +1,5 @@
 # chat_speak
-Chatter v.1.7 - Dec 17, 2024
+Chatter v.1.8 - Feb 11, 2025
 by Cuga Rajal
 
 This script will speak the local chat in macOS Firestorm, using macOS built-in text-to-speech.
@@ -51,10 +51,10 @@ It was created using Platypus, https://www.sveinbjorn.org/platypus
 The app expects php to be located in
 /opt/homebrew/bin/php which is standard for Apple Silicon systems. For Intel macOS systems
 you may need to rebuild this app with Platypus using a modified path for php, typically
-/usr/local/bin/php.
+/usr/local/bin/php, or add a symbolic link.
 
-Version 1.7 includes some code cleanup and better filtering of long technical phrases such as URLs and
-vectors.
+Version 1.8 improves speech for some long technical phrases such as UUIDs and acronyms, and
+cases where there was a ":" in the spoken phrase.
 
 
 This is a work in progress. Please notify me of bugs or feature requests.
